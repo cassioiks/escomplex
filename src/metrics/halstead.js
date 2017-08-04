@@ -34,7 +34,7 @@ HalsteadMetrics.prototype.calculate = function () {
     this.vocabulary = this.operators.distinct + this.operands.distinct
     // this.difficulty = (this.operators.distinct / 2) * (this.operands.distinct === 0 ? 1 : this.operands.total / this.operands.distinct)
     this.volume = this.length * Math.log2(this.vocabulary)
-    this.volumeStar = (2 + parameters) * Math.log2(2 + parameters)
+    this.volumeStar = (2 + this.parameters) * Math.log2(2 + this.parameters)
     this.programLength = this.volumeStar / this.length
     this.difficulty = 1 / this.programLength
     this.lStar = 1 / this.difficulty
