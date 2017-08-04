@@ -23,6 +23,7 @@ HalsteadMetrics.prototype.reset = function () {
   this.effort = 0
   this.bugs = 0
   this.time = 0
+  this.parameters = 0
 }
 
 HalsteadMetrics.prototype.calculate = function () {
@@ -31,9 +32,15 @@ HalsteadMetrics.prototype.calculate = function () {
     this.reset()
   } else {
     this.vocabulary = this.operators.distinct + this.operands.distinct
-    this.difficulty = (this.operators.distinct / 2) * (this.operands.distinct === 0 ? 1 : this.operands.total / this.operands.distinct)
-    this.volume = this.length * (Math.log(this.vocabulary) / Math.log(2))
-    this.effort = this.difficulty * this.volume
+    // this.difficulty = (this.operators.distinct / 2) * (this.operands.distinct === 0 ? 1 : this.operands.total / this.operands.distinct)
+    this.volume = this.length * Math.log2(this.vocabulary)
+    this.volumeStar = (2 + parameters) * Math.log2(2 + parameters)
+    this.programLength = this.volumeStar / this.length
+    this.difficulty = 1 / this.programLength
+    this.lStar = 1 / this.difficulty
+    this.intelligence = this.lStar * this.volumeStar
+    // this.effort = this.difficulty * this.volume
+    this.effort = this.volume / this.programLength
     this.bugs = this.volume / 3000
     this.time = this.effort / 18
   }
