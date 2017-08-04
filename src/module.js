@@ -237,7 +237,7 @@ function calculateMetrics (settings) {
     sumMaintainabilityMetrics(sums, indices, functionReport)
   })
   calculateCyclomaticDensity(report.aggregate)
-  report.aggregate.halsted.parameters = report.aggregate.params
+  report.aggregate.halstead.parameters = report.aggregate.params
   report.aggregate.halstead.calculate()
   if (count === 0) {
     // Sane handling of modules that contain no functions.
